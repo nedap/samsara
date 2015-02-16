@@ -1,3 +1,5 @@
+require 'active_support/concern'
+
 module Samsara::RevisionConcern
   extend ActiveSupport::Concern
 
