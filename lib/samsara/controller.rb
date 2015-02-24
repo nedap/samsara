@@ -24,15 +24,7 @@ module Samsara::Controller
   end
 
   def build_samsara_http_request
-    Samsara::HttpRequest.new(request_attributes_for_samsara)
-  end
-
-  def request_attributes_for_samsara
-    {
-      url:       request.filtered_path,
-      params:    request.filtered_parameters,
-      method:    request.method
-    }
+    Samsara.request_class.build_from(self)
   end
 
   def environment_name_for_samsara

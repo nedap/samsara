@@ -60,6 +60,19 @@ module Samsara
     context_class_name.constantize
   end
 
+  def self.request_class_name
+    @@request_class_name ||= "Samsara::HttpRequest"
+  end
+
+  def self.request_class_name=(name)
+    Samsara::Context.abstract_class = (name != "Samsara::HttpRequest")
+    @@request_class_name = name
+  end
+
+  def self.request_class
+    request_class_name.constantize
+  end
+
   def self.configure(&block)
     yield self
   end
