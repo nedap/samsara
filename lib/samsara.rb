@@ -44,7 +44,7 @@ module Samsara
   end
 
   def self.revision_class
-    ::Object.const_get(revision_class_name)
+    revision_class_name.constantize
   end
 
   def self.context_class_name
@@ -57,7 +57,7 @@ module Samsara
   end
 
   def self.context_class
-    ::Object.const_get(context_class_name)
+    context_class_name.constantize
   end
 
   def self.configure(&block)

@@ -2,12 +2,18 @@ module Samsara::Model
   extend ActiveSupport::Concern
 
   included do
+    def self.is_audited?
+      @is_audited || false
+    end
+
     def self.is_audited
+      @is_audited = true
+
       has_many :auditing_revisions, class_name: Samsara.revision_class_name, as: :subject
 
       after_create  :audit_create
-      after_update  :audit_update, if: :changed?
-      after_destroy :audit_destroy
+      after_update  :audit_update,  if: :changed?
+      after_destroy :audit_destroy, if: :destroyed?
     end
   end
 

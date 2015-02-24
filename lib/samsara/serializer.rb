@@ -1,12 +1,23 @@
 class Samsara::Serializer
 
-  def self.dump(hash)
-    hash
+  def self.dump(arg)
+    case arg
+    when Hash
+      arg.to_json
+    else
+      arg
+    end
   end
 
-  def self.load(hash)
-    return hash unless hash.is_a? Hash
-    symbolize_keys! hash
+  def self.load(arg)
+    case arg
+    when String
+      load JSON.parse(arg)
+    when Hash
+      symbolize_keys! arg
+    else
+      arg
+    end
   end
 
   def self.symbolize_keys!(arg)
