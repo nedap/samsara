@@ -2,42 +2,44 @@ module Samsara::Controller
   extend ActiveSupport::Concern
 
   included do
-    before_filter :set_auditing_context
-    after_filter  :unset_auditing_context
+    before_filter :set_samsara_context
+    after_filter  :unset_samsara_context
   end
 
-  def set_auditing_context
+  def set_samsara_context
     return unless Samsara.active?
-    Samsara.current_context = build_auditing_context
+    Samsara.current_context = build_samsara_context
   end
 
-  def unset_auditing_context
+  def unset_samsara_context
     Samsara.current_context = nil
   end
 
-  def build_auditing_context
+  def build_samsara_context
     Samsara.context_class.new.tap do |c|
-      c.event = build_auditing_request
-      c.application_name = application_name_for_auditing
-      c.environment_name = environment_name_for_auditing
+      c.event = build_samsara_http_request
+      c.application_name = application_name_for_samsara
+      c.environment_name = environment_name_for_samsara
     end
   end
 
-  def build_auditing_request
-    Samsara::HttpRequest.new.tap do |r|
-      r.user        = current_user
-      r.real_user   = current_real_user
-      r.url         = request.filtered_path
-      r.params      = request.filtered_parameters
-      r.method      = request.method
-    end
+  def build_samsara_http_request
+    Samsara::HttpRequest.new(request_attributes_for_samsara)
   end
 
-  def environment_name_for_auditing
+  def request_attributes_for_samsara
+    {
+      url:       request.filtered_path,
+      params:    request.filtered_parameters,
+      method:    request.method
+    }
+  end
+
+  def environment_name_for_samsara
     Rails.env
   end
 
-  def application_name_for_auditing
+  def application_name_for_samsara
     Rails.application.class.parent.name
   end
 end

@@ -16,7 +16,7 @@ module Samsara::ContextConcern
   end
 
   def event_class
-    ::Object.const_get(event_type)
+    event_type.constantize
   end
 
   def event
