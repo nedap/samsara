@@ -1,4 +1,6 @@
 # Samsara
+[![Build Status](https://secure.travis-ci.org/tcnijmeijer/samsara.png?branch=master)](http://travis-ci.org/tcnijmeijer/samsara)
+[![Code Climate](https://codeclimate.com/github/tcnijmeijer/samsara/badges/gpa.svg)](https://codeclimate.com/github/tcnijmeijer/samsara)
 
 A simple auditing gem that does things a little differently. Rather than just storing the domain changes made
 this gem is also capable of storing the context in which the changes were made such as a http request. This
