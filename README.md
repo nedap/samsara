@@ -1,6 +1,9 @@
 # Samsara
 
-TODO: Write a gem description
+A simple auditing gem that does things a little differently. Rather than just storing the domain changes made
+this gem is also capable of storing the context in which the changes were made such as a http request. This
+context is stored in a separate database table and is shared by multiple revisions in case a single request
+causes changes to multiple domain models.
 
 ## Installation
 
@@ -17,10 +20,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install samsara
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 

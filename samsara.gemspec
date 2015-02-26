@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
   spec.summary       = "Custom auditing gem made for and by PEP"
   spec.description   = <<-DESC
     Custom auditing gem made for and by PEP. Rather than just saving the modifications made,
-    this gem puts the changes in context by recording a separate context object. Multiple
-    modifications can be attached to a single context such as a single http request.
+    this gem puts the changes in context by storing a separate context object. Multiple
+    revisions can be attached to a single context such as a single http request.
   DESC
   spec.homepage      = ""
   spec.license       = "MIT"
