@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "samsara"
   spec.version       = Samsara::VERSION
   spec.authors       = ["Tom Nijmeijer"]
-  spec.email         = ["tom@nijmeijer.org"]
+  spec.email         = ["tom.nijmeijer@nedap.com"]
   spec.summary       = "Custom auditing gem made for and by PEP"
   spec.description   = <<-DESC
     Custom auditing gem made for and by PEP. Rather than just saving the modifications made,
