@@ -1,7 +1,7 @@
 # Samsara
-[![Build Status](https://secure.travis-ci.org/tcnijmeijer/samsara.png?branch=master)](http://travis-ci.org/tcnijmeijer/samsara)
-[![Code Climate](https://codeclimate.com/github/tcnijmeijer/samsara/badges/gpa.svg)](https://codeclimate.com/github/tcnijmeijer/samsara)
-[![Test Coverage](https://codeclimate.com/github/tcnijmeijer/samsara/badges/coverage.svg)](https://codeclimate.com/github/tcnijmeijer/samsara)
+[![Build Status](https://travis-ci.org/nedap/samsara.svg?branch=master)](http://travis-ci.org/nedap/samsara)
+[![Code Climate](https://codeclimate.com/repos/55377484e30ba0452a000e20/badges/4a99ca136302edade535/gpa.svg)](https://codeclimate.com/repos/55377484e30ba0452a000e20/feed)
+[![Test Coverage](https://codeclimate.com/repos/55377484e30ba0452a000e20/badges/4a99ca136302edade535/coverage.svg)](https://codeclimate.com/repos/55377484e30ba0452a000e20/feed)
 
 A simple auditing gem that does things a little differently. Rather than just storing the domain changes made
 this gem is also capable of storing the context in which the changes were made such as a http request. This
@@ -26,7 +26,7 @@ Or install it yourself as:
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/samsara/fork )
+1. Fork it ( https://github.com/nedap/samsara/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
