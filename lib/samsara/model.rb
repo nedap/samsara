@@ -13,7 +13,7 @@ module Samsara::Model
 
       after_create  :audit_create
       after_update  :audit_update,  if: :changed?
-      after_destroy :audit_destroy, if: :destroyed?
+      after_destroy :audit_destroy
     end
   end
 
