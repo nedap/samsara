@@ -2,8 +2,8 @@ module Samsara::Controller
   extend ActiveSupport::Concern
 
   included do
-    before_filter :set_samsara_context
-    after_filter  :unset_samsara_context
+    before_action :set_samsara_context
+    after_action  :unset_samsara_context
   end
 
   def set_samsara_context
