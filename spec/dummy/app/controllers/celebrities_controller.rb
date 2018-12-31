@@ -1,22 +1,22 @@
 class CelebritiesController < ApplicationController
 
   def index
-    render nothing: true
+    head :ok
   end
 
   def show
     celebrity = Celebrity.find(celebrity_id)
-    render nothing: true
+    head :ok
   end
 
   def create
     Celebrity.create(celebrity_params)
-    render nothing: true
+    head :ok
   end
 
   def multiply
     2.times{ Celebrity.create(celebrity_params) }
-    render nothing: true
+    head :ok
   end
 
   def celebrity_id

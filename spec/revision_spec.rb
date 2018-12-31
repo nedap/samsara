@@ -14,7 +14,7 @@ describe Samsara::Revision do
     { modified_attributes: modified_attributes, original_attributes: original_attributes }
   end
 
-  before { Samsara::Revision.create revision_attributes }
+  before { Samsara::Revision.create! revision_attributes }
   subject { Samsara::Revision.first }
 
   describe "#original_attributes" do
@@ -22,6 +22,7 @@ describe Samsara::Revision do
       allow(Samsara::Serializer).to receive(:dump).with(any_args)
       expect(Samsara::Serializer).to receive(:dump).with(original_attributes)
       subject.original_attributes = original_attributes
+      subject.save
     end
 
     it "is deserialized using the Samsara::Serializer" do
@@ -36,6 +37,7 @@ describe Samsara::Revision do
       allow(Samsara::Serializer).to receive(:dump).with(any_args)
       expect(Samsara::Serializer).to receive(:dump).with(modified_attributes)
       subject.modified_attributes = modified_attributes
+      subject.save
     end
 
     it "is deserialized using the Samsara::Serializer" do

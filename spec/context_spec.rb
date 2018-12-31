@@ -30,6 +30,7 @@ describe Samsara::Context do
       allow(Samsara::Serializer).to receive(:dump).with(any_args)
       expect(Samsara::Serializer).to receive(:dump).with(event_attributes)
       subject.event_attributes = event_attributes
+      subject.save
     end
 
     it "is deserialized using the Samsara::Serializer" do
