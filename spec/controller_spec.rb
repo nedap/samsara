@@ -11,7 +11,7 @@ describe CelebritiesController, type: :request do
   context "while samsara is not active" do
     before do
       Samsara.disable!
-      post(celebrities_path, celebrity: celebrity_params)
+      post(celebrities_path, params: {celebrity: celebrity_params})
     end
 
     it "does not create a context" do
@@ -44,7 +44,7 @@ describe CelebritiesController, type: :request do
 
     context "creating an invalid celebrity" do
       before do
-        post(celebrities_path, celebrity: celebrity_params.merge(gender: 3))
+        post(celebrities_path, params: {celebrity: celebrity_params.merge(gender: 3)})
       end
 
       it "does not create a context" do
@@ -58,7 +58,7 @@ describe CelebritiesController, type: :request do
 
     context "creating a single celebrity" do
       before do
-        post(celebrities_path, celebrity: celebrity_params, password: "supersecret")
+        post(celebrities_path, params: {celebrity: celebrity_params, password: "supersecret"})
       end
 
       it "creates a context" do
@@ -99,7 +99,7 @@ describe CelebritiesController, type: :request do
 
     context "creating multiple celebrities" do
       before do
-        post(multiply_celebrities_path, celebrity: celebrity_params, password: "supersecret")
+        post(multiply_celebrities_path, params: {celebrity: celebrity_params, password: "supersecret"})
       end
 
       it "creates a context" do

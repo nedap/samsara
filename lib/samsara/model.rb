@@ -12,7 +12,7 @@ module Samsara::Model
       has_many :auditing_revisions, class_name: Samsara.revision_class_name, as: :subject
 
       after_create  :audit_create
-      after_update  :audit_update,  if: :changed?
+      after_update  :audit_update,  if: :saved_changes?
       after_destroy :audit_destroy
     end
   end
@@ -36,8 +36,7 @@ module Samsara::Model
       a.subject = self
       a.context = Samsara.current_context
       a.modified_attributes = self.attributes
-      a.original_attributes = self.changed_attributes
+      a.original_attributes = self.saved_changes.transform_values(&:first)
     end.save
   end
-
 end

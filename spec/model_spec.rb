@@ -27,7 +27,6 @@ describe Celebrity do
     context "while samsara is active" do
       before do
         Samsara.enable!
-
       end
 
       context "trying to save an invalid celebrity" do
@@ -62,7 +61,7 @@ describe Celebrity do
           end
 
           it "has stored the original attributes" do
-            expect(revision.original_attributes).to eq(first_name: nil, last_name: nil, gender: nil, birth_date: nil, id: nil)
+            expect(revision.original_attributes).to eq({:birth_date=>nil, :first_name=>nil, :gender=>nil, :id=>nil, :last_name=>nil})
           end
 
           it "has stored the modified attributes" do
@@ -76,14 +75,13 @@ describe Celebrity do
   context "after update" do
     before do
       Samsara.disable!
-      subject.save
+      subject.save!
     end
 
     context "while samsara is not active" do
       before do
-        Samsara.disable!
         subject.last_name = "Margot"
-        subject.save
+        subject.save!
       end
 
       it "does not create a revision" do
@@ -92,13 +90,14 @@ describe Celebrity do
     end
 
     context "while samsara is active" do
+
       before do
         Samsara.enable!
       end
 
       context "not changing the celebrity" do
         before do
-          subject.save
+          subject.save!
         end
 
         it "does not create a revision" do
@@ -153,13 +152,12 @@ describe Celebrity do
   context "after destroy" do
     before do
       Samsara.disable!
-      subject.save
+      subject.save!
     end
 
     context "while samsara is not active" do
       before do
-        Samsara.disable!
-        subject.destroy
+        subject.destroy!
       end
 
       it "does not create a revision" do
@@ -185,7 +183,7 @@ describe Celebrity do
 
       context "successfully destroying the celebrity" do
         before do
-          subject.destroy
+          subject.destroy!
         end
 
         it "creates a revision" do
@@ -205,7 +203,7 @@ describe Celebrity do
           end
 
           it "has stored the original attributes" do
-            expect(revision.original_attributes).to eq({})
+            expect(revision.original_attributes).to eq({:birth_date=>nil, :first_name=>nil, :gender=>nil, :id=>nil, :last_name=>nil})
           end
 
           it "has stored the modified attributes" do

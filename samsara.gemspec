@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Samsara::VERSION
   spec.authors       = ["Tom Nijmeijer"]
   spec.email         = ["tom.nijmeijer@nedap.com"]
-  spec.summary       = "Custom auditing gem made for and by PEP"
+  spec.summary       = "Custom auditing gem made for and by Staffing Solutions"
   spec.description   = <<-DESC
-    Custom auditing gem made for and by PEP. Rather than just saving the modifications made,
+    Custom auditing gem made for and by Staffing Solutions. Rather than just saving the modifications made,
     this gem puts the changes in context by storing a separate context object. Multiple
     revisions can be attached to a single context such as a single http request.
   DESC
@@ -22,11 +22,13 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "activerecord",  ">= 3.0"
-  spec.add_dependency "activesupport", ">= 3.0"
+  spec.add_dependency "activerecord",  ">= 5.2"
+  spec.add_dependency "activesupport", ">= 5.2"
+  spec.add_dependency "activestorage", ">= 5.2"
 
   spec.add_development_dependency "bundler", ">= 1.6"
+  spec.add_development_dependency "byebug"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "sqlite3", "~> 1.2"
-  spec.add_development_dependency "rspec-rails", "~> 3.2"
+  spec.add_development_dependency "sqlite3", "~> 1.3"
+  spec.add_development_dependency "rspec-rails", "~> 3.7"
 end
