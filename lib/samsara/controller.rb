@@ -32,6 +32,6 @@ module Samsara::Controller
   end
 
   def application_name_for_samsara
-    Rails.application.class.parent.name
+    Rails.application.class.module_parent_name
   end
 end
