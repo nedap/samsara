@@ -29,5 +29,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "rake", "~> 12.3.3"
   spec.add_development_dependency "sqlite3", "~> 1.3"
-  spec.add_development_dependency "rspec-rails", ">= 3.7"
+  spec.add_development_dependency "rspec-rails", ">= 4.0"
 end
