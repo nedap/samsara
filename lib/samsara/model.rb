@@ -9,8 +9,6 @@ module Samsara::Model
     def self.is_audited
       @is_audited = true
 
-      has_many :auditing_revisions, class_name: Samsara.revision_class_name, as: :subject
-
       after_create  :audit_create
       after_update  :audit_update,  if: :saved_changes?
       after_destroy :audit_destroy
@@ -31,12 +29,12 @@ module Samsara::Model
 
   def create_audit(action)
     return unless Samsara.active?
-    Samsara.revision_class.new do |a|
-      a.action  = action
-      a.subject = self
-      a.context = Samsara.current_context
-      a.modified_attributes = self.attributes
-      a.original_attributes = self.saved_changes.transform_values(&:first)
-    end.save
+    Samsara.revision_class.new(
+        action: action,
+        subject: self,
+        context: Samsara.current_context,
+        modified_attributes: self.attributes,
+        original_attributes: self.saved_changes.transform_values(&:first)
+    ).save
   end
 end

@@ -3,28 +3,23 @@ require 'active_support/concern'
 module Samsara::RevisionConcern
   extend ActiveSupport::Concern
 
-  #  t.string     :action
-  #  t.integer    :subject_id
-  #  t.string     :subject_type
-  #  t.text       :modified_attributes
-  #  t.text       :original_attributes
-  #  t.references :context
-  #  t.timestamps
-
   included do
-    belongs_to :subject, polymorphic: true
-    belongs_to :context, class_name: Samsara.context_class_name
+    attr_accessor :action, :subject, :context, :modified_attributes, :original_attributes
 
-    default_scope{ order(:created_at) }
+    def initialize(subject:, action:, context:, modified_attributes:, original_attributes:)
+      self.subject = subject
+      self.action = action
+      self.context = context
+      self.modified_attributes = modified_attributes
+      self.original_attributes = original_attributes
+    end
 
-    serialize :modified_attributes, Samsara::Serializer
-    serialize :original_attributes, Samsara::Serializer
-  end
+    def subject_id
+      subject.id
+    end
 
-  def attribute_changes
-    original_attributes.each_with_object({}) do |(attribute, value), changes|
-      changes[attribute] = [value, modified_attributes[attribute]]
+    def subject_type
+      subject.class
     end
   end
-
 end

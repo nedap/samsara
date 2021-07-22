@@ -1,6 +1,4 @@
-require 'active_record'
-
-class Samsara::Revision < ActiveRecord::Base
+class Samsara::Revision
 
   include Samsara::RevisionConcern
 

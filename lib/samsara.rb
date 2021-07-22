@@ -39,7 +39,6 @@ module Samsara
   end
 
   def self.revision_class_name=(name)
-    Samsara::Revision.abstract_class = (name != "Samsara::Revision")
     @@revision_class_name = name
   end
 
@@ -52,7 +51,6 @@ module Samsara
   end
 
   def self.context_class_name=(name)
-    Samsara::Context.abstract_class = (name != "Samsara::Context")
     @@context_class_name = name
   end
 
@@ -65,7 +63,6 @@ module Samsara
   end
 
   def self.request_class_name=(name)
-    Samsara::Context.abstract_class = (name != "Samsara::HttpRequest")
     @@request_class_name = name
   end
 
@@ -79,7 +76,6 @@ module Samsara
 
 end
 
-require "samsara/serializer"
 require "samsara/http_request"
 require "samsara/revision_concern"
 require "samsara/revision"

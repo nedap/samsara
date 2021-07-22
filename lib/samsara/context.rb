@@ -1,7 +1,3 @@
-require 'active_record'
-
-class Samsara::Context < ActiveRecord::Base
-
+class Samsara::Context
   include Samsara::ContextConcern
-
 end
